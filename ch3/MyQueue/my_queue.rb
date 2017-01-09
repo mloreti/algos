@@ -16,7 +16,7 @@ class MyQueue
   def shift_stacks
     if (@old.is_empty?)
       until (@new.is_empty?)
-        @old.push(@new.pop)
+        @old.push(@new.pop.data)
       end
     end
     nil
@@ -39,7 +39,7 @@ class MyQueue
     old_node = @old.top
 
     while old_node
-      output << old_node.data
+      output << old_node
       old_node = old_node.next
     end
 
@@ -52,12 +52,3 @@ class MyQueue
   end
 
 end
-
-q = MyQueue.new
-q.add(1)
-q.add(2)
-q.add(3)
-q.add(4)
-q.add(5)
-
-p q.to_a
