@@ -8,7 +8,7 @@ class StackNode
 
 end
 
-class MyQueue
+class Stack
   attr_accessor :top
   def initialize
     @top = nil
