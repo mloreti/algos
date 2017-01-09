@@ -33,23 +33,11 @@ class MyQueue
   end
 
   def to_a
-    self.shift_stacks
     output = []
-    new_node = @new.top
-    old_node = @old.top
-
-    while old_node
-      output << old_node
-      old_node = old_node.next
+    until (@new.is_empty? && @old.is_empty?)
+      output << self.remove
     end
-    temp = []
-    while new_node
-      temp << new_node
-      new_node = new_node.next
-    end
-    
-    output.concat(temp.reverse)
-    output.map(&:data)
+    output
   end
 
 end
