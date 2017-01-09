@@ -18,7 +18,7 @@ class Stack
     raise "Queue is empty" if is_empty?
     node = @top
     @top = @top.next
-    return node.data
+    return node
   end
 
   def push(data)
