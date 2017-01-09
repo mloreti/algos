@@ -42,13 +42,28 @@ class MyQueue
       output << old_node
       old_node = old_node.next
     end
-
+    temp = []
     while new_node
-      output << new_node
+      temp << new_node
       new_node = new_node.next
     end
-
+    
+    output.concat(temp.reverse)
     output.map(&:data)
   end
 
 end
+
+
+q = MyQueue.new
+q.add(1)
+q.add(2)
+q.add(3)
+q.add(4)
+q.add(5)
+
+q.remove
+q.remove
+q.add(6)
+q.add(7)
+p q.to_a
