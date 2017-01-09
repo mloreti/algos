@@ -33,11 +33,24 @@ class MyQueue
   end
 
   def to_a
-    output = []
-    until (@new.is_empty? && @old.is_empty?)
-      output << self.remove
+    self.shift_stacks
+    new_node = @new.top
+    old_node = @old.top
+
+    front = []
+    while old_node
+      front << old_node
+      old_node = old_node.next
     end
-    output
+
+    back = []
+    while new_node
+      back << new_node
+      new_node = new_node.next
+    end
+
+    front.concat(back.reverse)
+    front.map(&:data)
   end
 
 end
@@ -54,4 +67,5 @@ q.remove
 q.remove
 q.add(6)
 q.add(7)
+p q.to_a
 p q.to_a
